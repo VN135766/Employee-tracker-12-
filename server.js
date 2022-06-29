@@ -1,5 +1,6 @@
 const express = require('express');
 const mysql = require('mysql2');
+const { sumBy } = require('lodash');
 
 const PORT = 3001;
 const app = express();
@@ -16,6 +17,7 @@ const db = mysql.createConnection(
     },
     console.log('Connection to company_db has been established')
 );
+db.query ();
 
 app.listen(PORT, () => {
     console.log(`Server successfully running on port ${PORT}`)

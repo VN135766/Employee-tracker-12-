@@ -32,6 +32,7 @@ inquirer.prompt(questions)
 
 const displayDepartments = () => {
     console.log('\n user selected to VIEW ALL DEPARTMENTS');
+    fetch ('')
 };
 
 const displayRoles = () => {
