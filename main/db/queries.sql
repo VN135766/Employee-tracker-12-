@@ -1,24 +1,24 @@
 SELECT * 
 FROM departments;
 
-SELECT *
-FROM departments
-JOIN roles ON departments.department_id = roles.department_id;
+SELECT role_id AS id, role_title, department_name, salary 
+FROM departments 
+JOIN roles ON roles.department_id = departments.department_id;
 
 SELECT * 
 FROM departments
 JOIN roles ON departments.department_id = roles.department_id
 JOIN employees ON roles.role_id = employees.role_id;
 
-INSERT INTO departments (department_id, department_name)
+INSERT INTO departments (department_name)
+    VALUES 
+        (?);
+
+INSERT INTO roles (role_title, salary, department_name)
     VALUES 
         (?,?);
 
-INSERT INTO roles (role_id, role_title, salary, department_name)
-    VALUES 
-        (?,?,?);
-
-INSERT INTO roles (employee_id, first_name, last_name, role_title, manager_id)
+INSERT INTO roles (first_name, last_name, role_title, manager_id)
     VALUES 
         (?,?,?,?);
 
