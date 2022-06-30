@@ -2,18 +2,6 @@ const questions = require('./main/lid/questions');
 const inquirer = require("inquirer");
 const cTable = require('console.table');
 const db = require('./main/config/connection');
-// const mysql = require('mysql2');
-
-
-// const db = mysql.createConnection(
-//     {
-//         host: 'localhost',
-//         user: 'root',
-//         password: '##Mybabysarah88',
-//         database: 'company_db'
-//     },
-//     console.log('Connection to company_db established!')
-// );
 
 const displayDepartments = () => {
     const sqlQuery = `SELECT * FROM departments;`
@@ -74,44 +62,69 @@ const addDepartment = () => {
 };
 
 const addRole = () => {
+    const addRole = (roleTitle, salary, departmentName) => {
+        const sqlQuery = `INSERT INTO roles (role_title, salary, department_id) VALUES (?,?,?);`
+        db.query(sqlQuery, [roleTitle, salary, departmentName], (err, response) => {
+            if (err) {
+                console.log(err);
+                return
+            } else {
+                console.log(`Added ${roleTitle} to the database`)
+                askQuestions()
+            }
+        })
 };
 
 const addEmployee = () => {
+    const addEmployee = (firstName, lastName, roleName, employeeManager) => {
+        const sqlQuery = `INSERT INTO roles (first_name, last_name, role_title, manager_id) VALUES (?,?,?,?);`
+        db.query(sqlQuery, [firstName, lastName, roleName, employeeManager], (err, response) => {
+            if (err) {
+                console.log(err);
+                return
+            } else {
+                console.log(`Added employee ${firstName} ${lastName} to the database`)
+                askQuestions()
+            }
+        })
 };
 
 const updateEmployee = () => {
+    const updateEmployee = (roleId, employeeId) => {
+        const sqlQuery = `UPDATE employees SET role_id = ? WHERE employee_id = ?`
+        db.query(sqlQuery, [roleId, employeeId], (err, response) => {
+            if (err) {
+                console.log(err);
+                return
+            } else {
+                console.log(`Added employee ${firstName} ${lastName} to the database`)
+                askQuestions()
+            }
+        })
 };
 
 const askQuestions = () => {
     inquirer.prompt(questions)
         .then((answers) => {
-            console.log(`\nUser selected to ${answers.userChoice}\n`)
-            switch (answers.userChoice) {
+            const { userChoice, departmentName, roleName, salary, roleDepartment, firstName, lastName, employeeRole, employeeManager, employeeSelection, employeeSelectionRole } = answers
+            console.log(`\nUser selected to ${userChoice}\n`)
+            switch (userChoice) {
                 case 'View All Departments':
-                    displayDepartments();
+                    addDepartment(departmentName);
                     break;
-                case 'View All Roles':
-                    displayRoles();
+                case 'Add A Role':
+                    addRole(roleName, salary, roleDepartment);
                     break;
-                    case 'View All Employees':
-                        displayEmployees();
-                        break;
-                    case 'Add A Department':
-                        addDepartment(answers.departmentName);
-                        break;
-                // case 'Add A Role':
-                //     addRole();
-                //     break;
-                // case 'Add An Employee':
-                //     addEmployee();
-                //     break;
-                // case 'Update An Employee':
-                //     updateEmployee();
-                //     break;
+                case 'Add An Employee':
+                    addEmployee(firstName, lastName, employeeRole, employeeManager);
+                    break;
+                case 'Update An Employee':
+                    updateEmployee(employeeSelectionRole, employeeSelection);
+                    break;
             }
         })
     }
-    return
-}
+    
+    
 
 askQuestions()
