@@ -1,4 +1,5 @@
-import inquirer from "inquirer"
+
+const data = require('../utils/retrieveOptions')
 
 const questions = [
     {

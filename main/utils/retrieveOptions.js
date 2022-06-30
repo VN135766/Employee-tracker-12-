@@ -1,19 +1,5 @@
 const db = require('../config/connection')
 
-const retrieveDepartments = () => {
-    db.query(`SELECT department_name FROM departments;`, (err, response) => {
-        if (err) {
-            console.log(err);
-        } else {
-            const departments = response.map(department => department.department_name);
-            return departments;
-        }
-    })
-}
-console.log(retrieveDepartments());
-
-
-
 // const retrieveDepartments = () => {
 //     return new Promise((resolve, reject) => {
 //         db.query(`SELECT department_name FROM departments;`, (err, response) => {
@@ -30,3 +16,19 @@ console.log(retrieveDepartments());
 // console.log(departments)
 
 // console.log(retrieveDepartments().then(data => {return data}))
+console.log(retrieveDepartments());
+const retrieveDepartments = () => {
+    return new Promise((resolve, reject) => {
+        db.query(`SELECT department_name FROM departments;`, (err, response) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(response.map(department => department.department_name))
+            }
+        })
+    })
+}
+
+const departmentList = retrieveDepartments().then(data => console.log(data)).catch('found an error')
+
+module.exports = departmentList
