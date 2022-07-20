@@ -2,29 +2,31 @@ USE company_db
 
 INSERT INTO departments (department_name)
 VALUES 
-    ('Sales'),
+    ('Operations'),
+    ('Human Resources'),
+    ('Quality Assurance'),
     ('Engineering'),
-    ('Finance'),
-    ('Legal');
+    ('Facilities');
 
 INSERT INTO roles (role_title, salary, department_id)
 VALUES
-    ('Sales Lead', 40000, 1),
-    ('Salesperson', 75000, 1),
-    ('Lead Engineer', 55000, 2),
-    ('Software Engineer', 40000, 2),
-    ('Account Manager', 45000, 3),
-    ('Accountant', 65000, 3),
-    ('Legal Team Lead', 85000, 4),
-    ('Lawyer', 110000, 4);
+    ('Lab Technician', 40000, 1),
+    ('Lab Supervisor', 75000, 1),
+    ('HR Representative', 55000, 2),
+    ('Reagents Tester', 40000, 3),
+    ('Equipment Analyst', 45000, 3),
+    ('Junior-level Software Engineer', 65000, 4),
+    ('Mid-level Software Engineer', 85000, 4),
+    ('Senior-level Software Engineer', 110000, 4),
+    ('Janitor', 34000, 5);
 
 INSERT INTO employees (first_name, last_name, role_id, manager_id)
 VALUES
-    ('Mike', 'Chan', 1, null),
-    ('Ashley', 'Rodriguez', 6 , null),
-    ('Kevin', 'Tupik', 8, null),
-    ('Kunal', 'Singh', 4, null),
-    ('Malia', 'Brown', 5, 1),
-    ('Sarah', 'Lourd', 2, 3),
-    ('Tom', 'Allen', 3, 4),
-    ('Morgan', 'Henning', 7, 4);
+    ('Zachary', 'Arsement', 6, null),
+    ('Martha', 'Dempsey', 9, null),
+    ('Leland', 'Byrd', 6, null),
+    ('Morgan', 'Henning', 8, null),
+    ('Michael', 'Klein', 1, 1),
+    ('Francis', 'Bond', 6, 3),
+    ('Ellie', 'Delgato', 2, 4),
+    ('George', 'Geils', 3, 4);

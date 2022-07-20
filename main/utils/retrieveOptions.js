@@ -1,34 +1,39 @@
 const db = require('../config/connection')
 
-// const retrieveDepartments = () => {
-//     return new Promise((resolve, reject) => {
-//         db.query(`SELECT department_name FROM departments;`, (err, response) => {
-//             if (err) {
-//                 reject(err);
-//             } else {
-//                 resolve(response.map(department => department.department_name))
-//             }
-//         })
-//     })
-// }
-
-// const departments = retrieveDepartments().then(data => {return data}).catch('there is an error')
-// console.log(departments)
-
-// console.log(retrieveDepartments().then(data => {return data}))
-console.log(retrieveDepartments());
-const retrieveDepartments = () => {
-    return new Promise((resolve, reject) => {
-        db.query(`SELECT department_name FROM departments;`, (err, response) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(response.map(department => department.department_name))
-            }
-        })
-    })
+const retrieveAllDepartments = async () => {
+    let depts = await db.promise().query(`SELECT * FROM departments`);
+    let deptsArr = depts[0].map(({ department_id, department_name }) => ({
+        name: `${department_name}`,
+        value: department_id
+    }));
+    return deptsArr
 }
 
-const departmentList = retrieveDepartments().then(data => console.log(data)).catch('found an error')
+const retrieveAllRoles = async () => {
+    let roles = await db.promise().query(`SELECT * FROM roles`);
+    let rolesArr = roles[0].map(({ role_id, role_title }) => ({
+        name: `${role_title}`,
+        value: role_id
+    }));
+    return rolesArr
+}
 
-module.exports = departmentList
+const retrieveAllTheEmployees = async () => {
+    let employees = await db.promise().query(`SELECT * FROM employees`);
+    let employeesArr = employees[0].map(({ employee_id, first_name, last_name }) => ({
+        name: `${first_name} ${last_name}`,
+        value: employee_id
+    }));
+    return employeesArr
+}
+
+const retrieveAllManagers = async () => {
+    let managers = await db.promise().query(`SELECT * FROM company_db.employees WHERE manager_id IS NULL;`);
+    let managersArr = managers[0].map(({ employee_id, first_name, last_name }) => ({
+        name: `${first_name} ${last_name}`,
+        value: employee_id
+    }));
+    return managersArr
+}
+
+module.exports = { retrieveAllDepartments, retrieveAllRoles, retrieveAllTheEmployees, retrieveAllManagers };
