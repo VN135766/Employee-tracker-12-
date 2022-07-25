@@ -38,7 +38,7 @@ MySQL
 - ### [URL to Video Walkthrough of Application](https://youtu.be/bPyaEZT3l1c)
 
 ## Screenshot of Webpage
-![alt](./assets/images/application-screenshot.png)
+![alt](./assets/images/Screenshot(57).png)
 
 ## Installation Instructions
 Since **Employee Tracker** is primarily a NodeJS application, you must have NodeJS downloaded. Please download [here](https://nodejs.org/en/download/) if you have not done so previously.
@@ -88,7 +88,7 @@ node index.js
 | Actions     | |
 | ----------- | ----------- | 
 | Display Departments | Display Roles |
-| Display Employees | Display Employees By Department |
+| Display Employees |
 | Display Budget For Each Department | Add Department |
 | Add Role | Add Employee |
 | Update Employee Role | 
