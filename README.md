@@ -10,7 +10,7 @@
 - [Questions](#Questions)
 
 ## Description
-**Employee Tracker** is a command-line application that allows for the user to display, update, and manage departments, roles, and employees within a company.  This content management system was builty primarily with [Node.js](https://nodejs.org/en/) , [Inquirer](https://www.npmjs.com/package/inquirer), and [MySQL](https://www.npmjs.com/package/mysql2) packages. **EMPLOYEE MANAGEMENT SYSTEM** was created to provide small businesses owners and HR departments with a platform that allows for them to organize and manage employee, role, and department data within their database.
+**Employee Tracker** is a command-line application that allows for the user to display, update, and manage departments, roles, and employees within a company.  This content management system was builty primarily with [Node.js](https://nodejs.org/en/) , [Inquirer](https://www.npmjs.com/package/inquirer), and [MySQL](https://www.npmjs.com/package/mysql2) packages. **Employee Tracker** was created to provide small businesses owners and HR departments with a platform that allows for them to organize and manage employee, role, and department data within their database.
 
 **Employee Tracker** currently allows the user to perform the following actions - 
 | Action      | 
